@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chat</title>
+    <title>my-project</title>
+    <% if(htmlWebpackPlugin.options.type == 'prod') {%>
+    <script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['manifest'].entry %>"></script>
+    <script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['vendor'].entry %>"></script>
+    <% } %>
+    <script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['rem'].entry %>"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+   <% for (var chunk in htmlWebpackPlugin.files.chunks) { if(chunk == 'rem' || chunk == 'vendor' || chunk == 'manifest')continue;%>
+	<script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+	<% } %>
+  </body>
+</html>
