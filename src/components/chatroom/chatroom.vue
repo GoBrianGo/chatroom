@@ -179,7 +179,9 @@ export default {
     scrollInView (e) {
       setTimeout(() => {
         e.target.scrollIntoViewIfNeeded()
-      }, 0)
+        e.target.scrollIntoView()
+        document.body.scrollTop = document.body.scrollHeight
+      }, 100)
     },
     sendMessage () {
       this.$store.dispatch('sendMsg', {value: this.msg})

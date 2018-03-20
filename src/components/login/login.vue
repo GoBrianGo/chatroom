@@ -10,6 +10,14 @@
     @click="loginMiddleFunc"
     v-bind:class="{ 'icon-go-disabled': !isActive, 'icon-go-active': isActive }"
     v-bind:disabled="!isActive" ></button>
+    <vue-core-image-upload
+  :class="['btn', 'btn-primary']"
+  crop="server"
+
+  @imageuploaded="imageuploaded"
+  :max-file-size="5242880"
+   >
+</vue-core-image-upload>
   </div>
 </template>
 <style scoped>
@@ -57,6 +65,7 @@
 </style>
 <script>
 import {mapActions} from 'vuex'
+import VueCoreImageUpload from 'vue-core-image-upload'
 
 export default {
   data () {
@@ -67,6 +76,9 @@ export default {
   },
   computed: {
   },
+  components: {
+    'vue-core-image-upload': VueCoreImageUpload
+  },
   methods: {
     ...mapActions([
       'login',
@@ -74,9 +86,14 @@ export default {
       'incrementIfOdd',
       'incrementAsync'
     ]),
+    imageuploaded () {
+
+    },
     scrollInView (e) {
       setTimeout(() => {
+        e.target.scrollIntoView()
         e.target.scrollIntoViewIfNeeded()
+        document.body.scrollTop = document.body.scrollHeight
       }, 100)
     },
     changeIconState (e) {

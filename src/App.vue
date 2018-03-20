@@ -14,6 +14,7 @@
 	input, button {
 		outline: none;
     	border: none;
+    	-webkit-tap-highlight-color: transparent;
 	}
 	li {
 		list-style-type: none;
